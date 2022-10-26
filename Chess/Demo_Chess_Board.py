@@ -51,10 +51,14 @@ images = { BISHOPB: bishopB, BISHOPW: bishopW, PAWNB: pawnB, PAWNW: pawnW, KNIGH
 
 
 def open_pgn_file(filename):
-    pgn = open(filename)
-    first_game = chess.pgn.read_game(pgn)
-    moves = [move for move in first_game.mainline()]
-    return moves
+    if not filename:
+        return None
+
+    else:
+        pgn = open(filename)
+        first_game = chess.pgn.read_game(pgn)
+        moves = [move for move in first_game.mainline()]
+        return moves
 
 
 def render_square(image, key, location):
